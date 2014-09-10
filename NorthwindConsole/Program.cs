@@ -3,31 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace NorthwindConsole
 {
     class Program
     {
-
         //This is your Data Context.  It is your gateway to your database.  
         static public NORTHWNDEntities dc = new NORTHWNDEntities();
 
         static void Main(string[] args)
         {
             //Take a look at these examples that use a live data source.
-            RunLambdaExamples();
+            //RunLambdaExamples();
 
             //Fill in these functions
-            RunWhereExpressions();
+            //RunWhereExpressions();
 
-            RunSelectExpressions();
+            //RunSelectExpressions();
 
             RunRelatedDataExpressions();
 
-            RunAggregateFunctions();
+            //RunAggregateFunctions();
 
             Console.ReadKey();
-
         }
 
         static void RunLambdaExamples()
@@ -80,7 +77,7 @@ namespace NorthwindConsole
             //this loop selects a single property from our Customer object, country, this would return a list of strings.
             //the .Distinct() function filters that list to unique values (countries).  This means that USA will only appear once 
             //even though there is more than one customer from the USA
-            foreach (var country in dc.Customers.Select(x => x.Country).Distinct().OrderBy(x => x))
+            foreach (var country in dc.Customers.Select(x => x.Country).OrderBy(x => x))
             {
                 //write the name of the country to the console.
                 Console.WriteLine(country);
@@ -95,15 +92,15 @@ namespace NorthwindConsole
             //create a loop to get all customers and select the unique cities that they live in order in reverse alphabetical order.  
             //print to console: <city>
 
-            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 46-48
+            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
 
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
 
-            //create a loop to get all customers and select the unique cities that they live in order in reverse alphabetical order.  
-            //print to console: <city>
+            //create a loop to get all orders and select the unique shipping postal code.  
+            //print to console: <shipPostalCode>
 
-            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 46-48
+            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
 
 
            
@@ -111,19 +108,13 @@ namespace NorthwindConsole
 
         static void RunWhereExpressions()
         {
-            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
-
-            //create a loop to get all products that are over $50, not discontinuted.  order by price.  
-            //print to console: <productName> - <unitPrice>
-
-            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 46-48
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
 
             //create a loop to get all products that are over $50, not discontinuted.  order by price.  
             //print to console: <productName> - <unitPrice>
 
-            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 46-48
+            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
 
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
@@ -131,15 +122,15 @@ namespace NorthwindConsole
             //create a loop to get all employees that live in London, order by last name.  
             //print to console: <firstname> <lastname> lives in <city>
 
-            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 46-48
+            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
 
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
 
-            //create a loop to get all employees whose job is not Sales Representative, order by last name.  
+            //create a loop to get all employees whose title is not Sales Representative, order by last name.  
             //print to console: <firstname> <lastname> is a <title>
 
-            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 46-48
+            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
 
         }
 
@@ -170,28 +161,28 @@ namespace NorthwindConsole
             //create a loop to get 10 orders where the employee's title is Inside Sales Coordinator, order by the most recent OrderDate.  
             //print to console: <orderID> <orderDate> was handled by <employee firstName> <employee lastName>, an <title>
 
-            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 46-48
+            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
 
             //create a loop to get 5 orders where the order was handled by the employee Andrew Fuller order by the most recent OrderDate.  
             //print to console: <orderID> <orderDate> was handled by <employee firstName> <employee lastName> <title>
 
-            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 46-48
+            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
 
             //create a loop to get 5 Suppliers and display the suppliers name and the number of products we stock. order by companyName.  
             //print to console: <companyName> supplies us with <number of products> products
 
-            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 46-48
+            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
 
             //create a loop to get 5 employees and display the employees first and last name and the number of orders they have handled. order by last name.  
             //print to console: <firstname> <lastname> has handled <number of orders> orders
 
-            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 46-48
+            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
             
             
         }
@@ -221,7 +212,7 @@ namespace NorthwindConsole
             //create a loop to get 5 orders and display the order ID and the total price of the order (quantity times unit price). 
             //print to console: <orderID> was sold at <totalPrice>
 
-            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 46-48
+            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
 
             //You can even do nested lambda expressions as well (notice its not very fast, but they work in a pinch) 
             //Uncomment the lines below to check it out
