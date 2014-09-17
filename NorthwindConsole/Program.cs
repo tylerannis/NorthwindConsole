@@ -87,21 +87,39 @@ namespace NorthwindConsole
             Console.WriteLine("END of writing products sorted by name");
             Console.WriteLine();
 
-            //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
-
+            //separate your output by a blank line followed by a comment line describing the output followed by another line LIKE ABOVE ON LINES 35-37 
+            Console.WriteLine();
+            Console.WriteLine("START of customers and cities");
+            Console.WriteLine();
             //create a loop to get all customers and select the unique cities that they live in order in reverse alphabetical order.  
             //print to console: <city>
+            foreach (var cities in dc.Customers.Select(x => x.City).OrderBy(x=>x))
+            {
+                //print the name and city
+                Console.WriteLine(cities);
+            }
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
-
+            Console.WriteLine();
+            Console.WriteLine("END of customers and cities");
+            Console.WriteLine();
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
-
+            Console.WriteLine();
+            Console.WriteLine("START of all orders and unique postal code");
+            Console.WriteLine();
             //create a loop to get all orders and select the unique shipping postal code.  
+            foreach (var shipPostalCode in dc.Orders.Select(x => x.ShipPostalCode).OrderBy(x=>x))
+            {
+                //print the postalcode and orders
+                Console.WriteLine(shipPostalCode);
+            }
             //print to console: <shipPostalCode>
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
-
+            Console.WriteLine();
+            Console.WriteLine("END of all orders and unique postal code");
+            Console.WriteLine();
 
            
         }
@@ -110,28 +128,49 @@ namespace NorthwindConsole
         {
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
-
+            Console.WriteLine();
+            Console.WriteLine("START of all products over 50 not discontinued");
+                Console.WriteLine();
             //create a loop to get all products that are over $50, not discontinuted.  order by price.  
             //print to console: <productName> - <unitPrice>
-
+                foreach (var product in dc.Products.Where(x => !x.Discontinued && x.UnitPrice >= 50).OrderBy(x => x.UnitPrice))
+                {
+                    Console.WriteLine(product.ProductName + " - " + product.UnitPrice);
+                }
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
-
+                Console.WriteLine();
+                Console.WriteLine("END of all products over 50 not discontinued");
+                Console.WriteLine();
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
-
+                Console.WriteLine();
+                Console.WriteLine("START of employees in london");
+                Console.WriteLine();
             //create a loop to get all employees that live in London, order by last name.  
             //print to console: <firstname> <lastname> lives in <city>
-
+                foreach (var em in dc.Employees.Where(x => x.City == "London").OrderBy(x => x.LastName))
+                {
+                    Console.WriteLine(em.FirstName + " - " + em.LastName + " lives in " + em.City);
+                }
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
-
+                Console.WriteLine();
+                Console.WriteLine("END of employees in london");
+                Console.WriteLine();
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
-
+                Console.WriteLine();
+                Console.WriteLine("START of non Sales Reps");
+                Console.WriteLine();
             //create a loop to get all employees whose title is not Sales Representative, order by last name.  
             //print to console: <firstname> <lastname> is a <title>
-
+            foreach (var nsl in dc.Employees.Where(x => x.Title != "Sales Representative").OrderBy(x => x.LastName))
+	{
+        Console.WriteLine(nsl.FirstName + nsl.LastName + " is a " + nsl);
+	}
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
-
+            Console.WriteLine();
+            Console.WriteLine("END of non Sales Reps");
+            Console.WriteLine();
         }
 
         static void RunRelatedDataExpressions()
@@ -157,24 +196,43 @@ namespace NorthwindConsole
             Console.WriteLine();
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
-            
+            Console.WriteLine();
+            Console.WriteLine("START 10 orders Inside Sales");
+            Console.WriteLine();
             //create a loop to get 10 orders where the employee's title is Inside Sales Coordinator, order by the most recent OrderDate.  
             //print to console: <orderID> <orderDate> was handled by <employee firstName> <employee lastName>, an <title>
-
+            foreach (var i in dc.Orders.Where(x => x.Employee.Title == "Inside Sales Coordinator").OrderBy(x => x.OrderDate).Take(10))
+            {
+                Console.WriteLine(i.OrderID + " " + i.OrderDate + " was handled by " + i.Employee.FirstName + " " + i.Employee.LastName + ", an " + i.Employee.Title);
+            }
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
-
+            Console.WriteLine();
+            Console.WriteLine("END 10 orders Inside Sales");
+            Console.WriteLine();
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
-
+            Console.WriteLine();
+            Console.WriteLine("START 5 orders handled by Andrew Fuller");
+            Console.WriteLine();
             //create a loop to get 5 orders where the order was handled by the employee Andrew Fuller order by the most recent OrderDate.  
             //print to console: <orderID> <orderDate> was handled by <employee firstName> <employee lastName> <title>
-
+            foreach (var c in dc.Orders.Where(x => x.Employee.FirstName == "Andrew" && x.Employee.LastName == "Fuller").Take(5).OrderBy(x => x.OrderDate))
+            {
+                Console.WriteLine(c.OrderID + " " + c.OrderDate + " " + " was handled by " + c.Employee.FirstName + " " + c.Employee.LastName + " " + c.Employee.Title);
+            }
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
-
+            Console.WriteLine();
+            Console.WriteLine("END 5 orders handled by Andrew Fuller");
+            Console.WriteLine();
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
-
+            Console.WriteLine();
+            Console.WriteLine("START 5 suppliers names");
+            Console.WriteLine();
             //create a loop to get 5 Suppliers and display the suppliers name and the number of products we stock. order by companyName.  
             //print to console: <companyName> supplies us with <number of products> products
-
+            foreach (var s in dc.Suppliers.)
+            {
+                
+            }
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 48-50
 
             //separate your output by a blank line followed by a comment line describing the out followed by another line LIKE ABOVE ON LINES 35-37 
